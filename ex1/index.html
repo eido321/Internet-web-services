@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+<section>
+    <h1>Get all family reunification form</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Personal Situation</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Birth Date</th>
+            <th>Birth Place</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr>
+        </thead>
+        <tbody id="getAllFrFormsBody"></tbody>
+    </table>
+</section>
+<section id="getFrFormByIdSection">
+    <h1>Get family reunification form by ID</h1>
+    <form id="getFrFormByIdForm" onsubmit="event.preventDefault(); getFrFormById();">
+        <label for="formId"><b>Enter Form ID to Get Details: </b></label>
+        <input type="text" id="formId" name="formId" required>
+        <button type="button" onclick="getFrFormById()">Get Details</button>
+    </form>
+    <section id="getFrFormByIdDetails"></section>
+</section>
+<section id="createFrFormSection">
+    <h1>Create family reunification form</h1>
+    <h2>Example Input: </h2>
+    <p>
+        {
+        "id": 11,
+        "citizenId": "314652884",
+        "name": "Eido Peretz",
+        "personalSituation": "married",
+        "gender": "male",
+        "email": "eido2488@gmail.com",
+        "birthDate": "30/05/2000",
+        "birthCountry": "Israel",
+        "address": "Rishon Lezion",
+        "phone": "052-7542999",
+        "marriageCertificateImg": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "CriminalInformationCertificateImg": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "recommendationLetterImg1": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "recommendationLetterImg2": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "passportImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Solid_white_bordered.svg/2048px-Solid_white_bordered.svg.png",
+        "bankStatementImg": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "spousePassportImg": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "spouseBankStatementImg": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "familyRecommendationLetterImg1": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "familyRecommendationLetterImg2": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "childrenPassportImg1": "https://via.placeholder.com/500x500.png?text=White+Image",
+        "childrenPassportImg2": "https://via.placeholder.com/500x500.png?text=White+Image"
+        }
+    </p>
+    <form id="createFrFormForm" onsubmit="event.preventDefault(); createFrForm();">
+        <label for="createName"><b>JSON Text: </b></label>
+        <textarea id="createName" name="createName" required></textarea>
+        <button type="button" onclick="createFrForm()">Send Form</button>
+    </form>
+    <section id="createFrFormDetails"></section>
+</section>
+<section id="updateFrFormSection">
+    <h1>Update family reunification form</h1>
+    <form id="updateFrFormForm" onsubmit="event.preventDefault(); updateFrForm();">
+        <label for="updateFormId"><b>Form ID to Update: </b></label>
+        <input type="text" id="updateFormId" name="updateFormId" required><br><br>
+        <label for="updateFormData"><b>Updated JSON Text: </b></label>
+        <textarea id="updateFormData" name="updateFormData" required></textarea>
+        <button type="button" onclick="updateFrForm()">Update Form</button>
+    </form>
+    <section id="updateFrFormDetails"></section>
+</section>
+<section id="deleteFrFormByIdSection">
+    <h1>Delete family reunification form by ID</h1>
+    <form id="deleteFrFormByIdForm" onsubmit="event.preventDefault(); deleteFrFormById();">
+        <label for="deleteFormId"><b>Enter Form ID to Delete: </b></label>
+        <input type="text" id="deleteFormId" name="deleteFormId" required>
+        <button type="button" onclick="deleteFrFormById()">Delete Form</button>
+    </form>
+    <section id="deleteFrFormByIdDetails"></section>
+</section>
+
+<script src="scripts/script.js"></script>
+</body>
+
+</html>

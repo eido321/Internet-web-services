@@ -13,8 +13,8 @@ server.use(logger('dev'))
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
-const { familyReunificationFormRouter } = require('../routers/familyReunificationFormRouter')
-const { staticFileRouter } = require('../routers/staticFileRouter')
+const { familyReunificationFormRouter } = require('../router/familyReunificationFormRouter')
+const { staticFileRouter } = require('../router/staticFileRouter')
 
 server.use('/api/familyReunificationForm', familyReunificationFormRouter)
 server.use(staticFileRouter)

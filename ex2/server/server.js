@@ -1,19 +1,23 @@
 const express = require('express')
 const logger = require('morgan')
+const fs = require('fs')
+const path = require('path')
 const server = express()
 const port = process.env.PORT || 3000
 const { errorHandler } = require('../middlewares/errorHandler')
+const accessLogStream = fs.createWriteStream(path.join(__dirname, '../logs.txt'), { flags: 'a' })
 
+server.use(logger('combined', { stream: accessLogStream }))
+server.use(logger('dev'))
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
-server.use(logger('dev')) // server.use(logger("combined"));
 server.use(errorHandler)
 
 const { familyReunificationFormRouter } = require('../routers/familyReunificationFormRouter')
-const { middlewareRouter } = require('../routers/staticFileRouter')
+const { staticFileRouter } = require('../routers/staticFileRouter')
 
 server.use('/api/familyReunificationForm', familyReunificationFormRouter)
-server.use(middlewareRouter)
+server.use(staticFileRouter)
 
 server.listen(port, () => console.log(`Express server is running on port ${port}`))
 

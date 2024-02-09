@@ -1,5 +1,6 @@
 const express = require('express')
 const logger = require('morgan')
+require('express-async-errors')
 const fs = require('fs')
 const path = require('path')
 const server = express()
@@ -11,13 +12,13 @@ server.use(logger('combined', { stream: accessLogStream }))
 server.use(logger('dev'))
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
-server.use(errorHandler)
 
 const { familyReunificationFormRouter } = require('../routers/familyReunificationFormRouter')
 const { staticFileRouter } = require('../routers/staticFileRouter')
 
 server.use('/api/familyReunificationForm', familyReunificationFormRouter)
 server.use(staticFileRouter)
+server.use(errorHandler)
 
 server.listen(port, () => console.log(`Express server is running on port ${port}`))
 

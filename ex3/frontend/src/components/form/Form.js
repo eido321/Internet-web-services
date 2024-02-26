@@ -138,7 +138,10 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
                     childrenPassportImg2: formData.childrenPassportImg2
                     // Add other fields as needed
                 };
-                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', body);
+                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', body, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    });
                 setData(result.data);
             }
         } catch (error) {

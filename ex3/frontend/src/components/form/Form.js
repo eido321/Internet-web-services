@@ -113,7 +113,32 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
                 setData(result.data);
             }else if(type === 'createVisible'){
                 console.log('formData.json: ', formData.json);
-                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', formData.json);
+                const body = {
+                    id: formData.id,
+                    citizenId: formData.citizenId,
+                    name: formData.name,
+                    personalSituation: formData.personalSituation,
+                    gender: formData.gender,
+                    email: formData.email,
+                    birthDate: formData.birthDate,
+                    birthCountry: formData.birthCountry,
+                    address: formData.address,
+                    phone: formData.phone,
+                    marriageCertificateImg: formData.marriageCertificateImg,
+                    CriminalInformationCertificateImg: formData.CriminalInformationCertificateImg,
+                    recommendationLetterImg1: formData.recommendationLetterImg1,
+                    recommendationLetterImg2: formData.recommendationLetterImg2,
+                    passportImg: formData.passportImg,
+                    bankStatementImg: formData.bankStatementImg,
+                    spousePassportImg: formData.spousePassportImg,
+                    spouseBankStatementImg: formData.spouseBankStatementImg,
+                    familyRecommendationLetterImg1: formData.familyRecommendationLetterImg1,
+                    familyRecommendationLetterImg2: formData.familyRecommendationLetterImg2,
+                    childrenPassportImg1: formData.childrenPassportImg1,
+                    childrenPassportImg2: formData.childrenPassportImg2
+                    // Add other fields as needed
+                };
+                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', body);
                 setData(result.data);
             }
         } catch (error) {

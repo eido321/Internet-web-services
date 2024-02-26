@@ -15,7 +15,7 @@ const NavContainer = styled.div`
     align-items: center;
 `;
 
-const FunctionsBar = ({setGetAllVisible, setGetVisible, setCreateVisible, setUpdateVisible, setDeleteVisible}) => {
+const FunctionsBar = ({setGetAllVisible, setGetVisible, setCreateVisible, setUpdateVisible, setDeleteVisible, setData}) => {
 
     function resetAll() {
         setGetAllVisible(false);
@@ -23,6 +23,8 @@ const FunctionsBar = ({setGetAllVisible, setGetVisible, setCreateVisible, setUpd
         setCreateVisible(false);
         setUpdateVisible(false);
         setDeleteVisible(false);
+        
+        setData(null)
     }
 
     return (

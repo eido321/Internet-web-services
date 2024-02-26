@@ -106,7 +106,13 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        setFormData({
+            id: '',
+            json: ''
+        });
+        if (e) {
+            e.preventDefault();
+        }
         try {
             if (type === 'getVisible') {
                 const result = await axios.get(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
@@ -130,37 +136,48 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
             } else if (type === 'deleteVisible') {
                 const result = await axios.delete(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
                 setData(result.data);
+            } else if (type === 'getAllVisible') {
+                const result = await axios.get(`https://internet-web-services.onrender.com/api/familyReunificationForm`);
+                console.log('here');
+                setData(result.data);
             }
         } catch (error) {
             console.error('Error submitting form:', error.response ? error.response.data : error.message);
         }
     };
-    
-    
-    
+
+    useEffect(() => {
+        if (type === 'getAllVisible') {
+            handleSubmit(); // Call handleSubmit only when type is 'getAllVisible'
+        }
+    }, [type]);
+
 
     return (
-        <FormDiv>
-            <FormTitle>Enter Form Details</FormTitle>
-            <FormContainer>
-                {idInput && (
-                    <InputContainer>
-                        <InputLabel htmlFor='id'>Enter Form ID to Get Details:</InputLabel>
-                        <Input type='text' id='id' name='id' value={formData.id} onChange={handleChange} />
-                    </InputContainer>
-                )}
-                {jsonInput && (
-                    <InputContainer>
-                        <InputLabel htmlFor='json'>Enter JSON text:</InputLabel>
-                        <TextArea id='json' name='json' rows='10' cols='50' value={formData.json} onChange={handleChange}></TextArea>
-                    </InputContainer>
-                )}
-                <ButtonContainer>
-                    <Button onClick={handleSubmit}>Submit</Button>
-                </ButtonContainer>
-            </FormContainer>
-        </FormDiv>
+        (idInput || jsonInput) && (
+            <FormDiv>
+                <FormTitle>Enter Form Details</FormTitle>
+                <FormContainer>
+                    {idInput && (
+                        <InputContainer>
+                            <InputLabel htmlFor='id'>Enter Form ID to Get Details:</InputLabel>
+                            <Input type='text' id='id' name='id' value={formData.id} onChange={handleChange} />
+                        </InputContainer>
+                    )}
+                    {jsonInput && (
+                        <InputContainer>
+                            <InputLabel htmlFor='json'>Enter JSON text:</InputLabel>
+                            <TextArea id='json' name='json' rows='10' cols='50' value={formData.json} onChange={handleChange}></TextArea>
+                        </InputContainer>
+                    )}
+                    <ButtonContainer>
+                        <Button onClick={handleSubmit}>Submit</Button>
+                    </ButtonContainer>
+                </FormContainer>
+            </FormDiv>
+        )
     );
+
 };
 
 export default Form;

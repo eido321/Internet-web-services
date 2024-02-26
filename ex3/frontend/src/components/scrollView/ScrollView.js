@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Table from '../table/Table';
 import Details from '../messageContainer/Details';
 import SuccessMsg from '../messageContainer/SuccessMsg';
 import Form from '../form/Form';
@@ -26,8 +27,7 @@ const ScrollContainer = styled.div`
     border-radius: 15px;
 `;
 
-const ScrollView = ({ getAllVisible, getVisible, createVisible, updateVisible, deleteVisible }) => {
-    const [data, setData] = useState(null);
+const ScrollView = ({ getAllVisible, getVisible, createVisible, updateVisible, deleteVisible, data, setData}) => {
     const [type, setType] = useState('getVisible');
     const [idInput, setIdInput] = useState(false);
     const [jsonInput, setJsonInput] = useState(false);
@@ -60,10 +60,11 @@ const ScrollView = ({ getAllVisible, getVisible, createVisible, updateVisible, d
         <Container>
             <ScrollContainer>
                 <Form idInput={idInput} jsonInput={jsonInput} setData={setData} type={type}/>
-                {getVisible && (<Details data={data}/>)}
+                {getAllVisible && data && (<Table data={data}/>)}
+                {getVisible && data && (<Details data={data}/>)}
                 {createVisible && data  && (<SuccessMsg data={data} text={`Family reunification form of id - ${data.id} was successfully submitted`}/>)}
-                {updateVisible && data  && (<SuccessMsg data={data} text={`Family reunification form of id - ${data.id} was successfully updated`}/>)}
-
+                {updateVisible && data && (<SuccessMsg data={data} text={`Family reunification form was successfully updated`}/>)}
+                {deleteVisible && data && (<SuccessMsg data={data} text={`Family reunification form was successfully deleted`}/>)}
             </ScrollContainer>
         </Container>
     );

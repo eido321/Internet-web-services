@@ -10,6 +10,8 @@ function App() {
   const [createVisible, setCreateVisible] = useState(false);
   const [updateVisible, setUpdateVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
+
+  const [data, setData] = useState(null);
   
   return (
     <div>
@@ -20,6 +22,7 @@ function App() {
         setCreateVisible={setCreateVisible}
         setUpdateVisible={setUpdateVisible}
         setDeleteVisible={setDeleteVisible}
+        setData={setData}
       />
       <ScrollView 
         getAllVisible={getAllVisible}
@@ -27,6 +30,8 @@ function App() {
         createVisible={createVisible}
         updateVisible={updateVisible}
         deleteVisible={deleteVisible}
+        data={data}
+        setData={setData}
       />
     </div>
   );

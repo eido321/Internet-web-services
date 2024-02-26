@@ -4,7 +4,6 @@ import logo from '../../assets/logo.png';
 
 const HeaderComponent = styled.header`
     background-color: #778DA3;
-    padding: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -20,8 +19,8 @@ const Title = styled.h1`
 `;
 
 const Logo = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin-top: 20px;
 `;

@@ -23,7 +23,7 @@ const SuccessMsg = ({data,text}) => {
     console.log('data: ' ,data);
     return (
         <DetailsDiv>
-            <DetailsTitle>{text}</DetailsTitle>
+            {data && (<DetailsTitle>{text}</DetailsTitle>)}
         </DetailsDiv>
     );
 };

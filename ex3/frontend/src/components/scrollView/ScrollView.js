@@ -27,7 +27,7 @@ const ScrollContainer = styled.div`
 `;
 
 const ScrollView = ({ getAllVisible, getVisible, createVisible, updateVisible, deleteVisible }) => {
-    const [data, setData] = useState([{}]);
+    const [data, setData] = useState(null);
     const [type, setType] = useState('getVisible');
     const [idInput, setIdInput] = useState(false);
     const [jsonInput, setJsonInput] = useState(false);
@@ -61,7 +61,9 @@ const ScrollView = ({ getAllVisible, getVisible, createVisible, updateVisible, d
             <ScrollContainer>
                 <Form idInput={idInput} jsonInput={jsonInput} setData={setData} type={type}/>
                 {getVisible && (<Details data={data}/>)}
-                {createVisible && (<SuccessMsg data={data} text={`Family reunification form of id - ${idInput} was successfully submitted`}/>)}
+                {createVisible && data  && (<SuccessMsg data={data} text={`Family reunification form of id - ${data.id} was successfully submitted`}/>)}
+                {updateVisible && data  && (<SuccessMsg data={data} text={`Family reunification form of id - ${data.id} was successfully updated`}/>)}
+
             </ScrollContainer>
         </Container>
     );

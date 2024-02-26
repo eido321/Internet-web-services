@@ -111,43 +111,33 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
             if (type === 'getVisible') {
                 const result = await axios.get(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
                 setData(result.data);
-            }else if(type === 'createVisible'){
-                console.log('formData.json: ', formData.json);
-                const body = {
-                    id: formData.id,
-                    citizenId: formData.citizenId,
-                    name: formData.name,
-                    personalSituation: formData.personalSituation,
-                    gender: formData.gender,
-                    email: formData.email,
-                    birthDate: formData.birthDate,
-                    birthCountry: formData.birthCountry,
-                    address: formData.address,
-                    phone: formData.phone,
-                    marriageCertificateImg: formData.marriageCertificateImg,
-                    CriminalInformationCertificateImg: formData.CriminalInformationCertificateImg,
-                    recommendationLetterImg1: formData.recommendationLetterImg1,
-                    recommendationLetterImg2: formData.recommendationLetterImg2,
-                    passportImg: formData.passportImg,
-                    bankStatementImg: formData.bankStatementImg,
-                    spousePassportImg: formData.spousePassportImg,
-                    spouseBankStatementImg: formData.spouseBankStatementImg,
-                    familyRecommendationLetterImg1: formData.familyRecommendationLetterImg1,
-                    familyRecommendationLetterImg2: formData.familyRecommendationLetterImg2,
-                    childrenPassportImg1: formData.childrenPassportImg1,
-                    childrenPassportImg2: formData.childrenPassportImg2
-                    // Add other fields as needed
-                };
-                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', body, {
+            } else if (type === 'createVisible') {
+                const formDataObject = JSON.parse(formData.json); // Parse JSON string into object
+                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', formDataObject, {
                     headers: {
                         'Content-Type': 'application/json'
-                    });
+                    }
+                });
+                setData(result.data);
+            } else if (type === 'updateVisible') {
+                const formDataObject = JSON.parse(formData.json); // Parse JSON string into object
+                const result = await axios.put(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`, formDataObject, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setData(result.data);
+            } else if (type === 'deleteVisible') {
+                const result = await axios.delete(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
                 setData(result.data);
             }
         } catch (error) {
-            console.error(error);
+            console.error('Error submitting form:', error.response ? error.response.data : error.message);
         }
     };
+    
+    
+    
 
     return (
         <FormDiv>

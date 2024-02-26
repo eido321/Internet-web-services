@@ -12,6 +12,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, '../logs.txt')
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Include PUT method
   res.set('Content-Type', 'application/json');
   next();
 });

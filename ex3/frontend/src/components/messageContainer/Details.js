@@ -55,16 +55,16 @@ const Details = ({data}) => {
     console.log('data: ' ,data);
     return (
         <DetailsDiv>
-            <DetailsTitle>Family reunification form of id - </DetailsTitle>
+            <DetailsTitle>Family reunification form of id - {data['id']}</DetailsTitle>
             <DetailsContainer>
                 <UnorderedList>
-                    <ListItem>Name - </ListItem>
-                    <ListItem>Personal Situation - </ListItem>
-                    <ListItem>Email - </ListItem>
-                    <ListItem>Gender - </ListItem>
-                    <ListItem>Birth Date - </ListItem>
-                    <ListItem>Birth Place - </ListItem>
-                    <ListItem>Phone - </ListItem>
+                    <ListItem>Name - {data['name']}</ListItem>
+                    <ListItem>Personal Situation - {data['personalSituation']}</ListItem>
+                    <ListItem>Email - {data['email']}</ListItem>
+                    <ListItem>Gender - {data['gender']}</ListItem>
+                    <ListItem>Birth Date - {data['birthDate']}</ListItem>
+                    <ListItem>Birth Place - {data['birthCountry']}</ListItem>
+                    <ListItem>Phone - {data['phone']}</ListItem>
                 </UnorderedList>
             </DetailsContainer>
         </DetailsDiv>

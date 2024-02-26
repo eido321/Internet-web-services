@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Details from '../details/Details';
+import Details from '../messageContainer/Details';
+import SuccessMsg from '../messageContainer/SuccessMsg';
 import Form from '../form/Form';
 
 const Container = styled.div`
@@ -60,6 +61,7 @@ const ScrollView = ({ getAllVisible, getVisible, createVisible, updateVisible, d
             <ScrollContainer>
                 <Form idInput={idInput} jsonInput={jsonInput} setData={setData} type={type}/>
                 {getVisible && (<Details data={data}/>)}
+                {createVisible && (<SuccessMsg data={data} text={`Family reunification form of id - ${idInput} was successfully submitted`}/>)}
             </ScrollContainer>
         </Container>
     );

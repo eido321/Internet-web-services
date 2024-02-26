@@ -111,28 +111,15 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
             if (type === 'getVisible') {
                 const result = await axios.get(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
                 setData(result.data);
+            }else if(type === 'createVisible'){
+                console.log('formData.json: ', formData.json);
+                const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', formData.json);
+                setData(result.data);
             }
         } catch (error) {
             console.error(error);
         }
     };
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (type === 'getAllVisible') {
-                    const result = await axios.get('https://internet-web-services.onrender.com/api/familyReunificationForm');
-                    setData(result.data);
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        if (type === 'getVisible') {
-            fetchData();
-        }
-    }, [type, setData]);
 
     return (
         <FormDiv>

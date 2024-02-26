@@ -1,15 +1,39 @@
 import React from 'react';
-import './header.style.css';
-import logo from '../../assets/logo.png'
+import styled from 'styled-components';
+import logo from '../../assets/logo.png';
+
+const HeaderComponent = styled.header`
+    background-color: #778DA3;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+`;
+
+const Title = styled.h1`
+    font-size: 42px;
+    font-weight: bold;
+    color: #ffffff;
+`;
+
+const Logo = styled.img`
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+`;
 
 const Header = () => {
     return (
-        <header className='header'>
-            <h1 className='title'>Family reunification forms</h1>
+        <HeaderComponent>
+            <Title>Family reunification forms</Title>
             <a href='https://github.com/eido321/Internet-web-services'>
-            <img className='logo' src={logo} alt='GitHub Logo' />
+                <Logo src={logo} alt='GitHub Logo' />
             </a>
-        </header>
+        </HeaderComponent>
     );
 };
 

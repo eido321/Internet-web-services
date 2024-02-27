@@ -26,7 +26,7 @@ exports.familyReunificationFormController = {
   async addFamilyReunificationForm (req, res, next) {
     if (!req.body.id || !req.body.citizenId || !req.body.name || !req.body.personalSituation || !req.body.gender || !req.body.gender || !req.body.email || !req.body.birthDate || !req.body.birthCountry || !req.body.address || !req.body.phone || !req.body.marriageCertificateImg || !req.body.CriminalInformationCertificateImg || !req.body.recommendationLetterImg1 || !req.body.recommendationLetterImg2 || !req.body.passportImg || !req.body.bankStatementImg || !req.body.spousePassportImg || !req.body.spouseBankStatementImg || !req.body.familyRecommendationLetterImg1 || !req.body.familyRecommendationLetterImg2 || !req.body.childrenPassportImg1 || !req.body.childrenPassportImg2) {
       console.log(req.body)
-      throw new BadRequest('Invalid Data')
+      throw new BadRequest('Please provide a valid id/json object')
     }
     try {
       const result = {
@@ -43,7 +43,7 @@ exports.familyReunificationFormController = {
     try {
       const id = parseInt(req.params.id)
       if (!Number.isInteger(id)) {
-        throw new BadRequest('Invalid Data')
+        throw new BadRequest('Please provide a valid id/json object')
       }
       const result = {
         status: 200,
@@ -60,7 +60,7 @@ exports.familyReunificationFormController = {
   },
   async deleteFamilyReunificationFormById (req, res, next) {
     if (!Number.isInteger(parseInt(req.params.id))) {
-      throw new BadRequest('Invalid Data')
+      throw new BadRequest('Please provide a valid id/json object')
     }
     try {
       const result = {
@@ -78,7 +78,7 @@ exports.familyReunificationFormController = {
   },
   async updateFamilyReunificationFormById (req, res, next) {
     if (!Number.isInteger(parseInt(req.params.id))) {
-      throw new BadRequest('Invalid Data')
+      throw new BadRequest('Please provide a valid id/json object')
     }
     try {
       const result = {

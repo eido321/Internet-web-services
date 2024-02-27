@@ -1,5 +1,3 @@
-// Button.js
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -11,27 +9,27 @@ const StyledButton = styled.button`
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    border: 2px solid #778DA3;
+    border: 2px solid ${props => props.pressed ? '#ffffff' : '#778DA3'};
     border-radius: 45px;
-    background-color: #ffffff;
-    color: #778DA3;
+    background-color: ${props => props.pressed ? '#778DA3' : '#ffffff'};
+    color: ${props => props.pressed ? '#ffffff' : '#778DA3'};
     cursor: pointer;
     max-width: 280px;
 
     &:hover {
-        background-color: #778DA3;
-        color: #ffffff;
+        background-color: ${props => props.pressed ? '#778DA3' : '#ffffff'};
+        color: ${props => props.pressed ? '#ffffff' : '#778DA3'};
     }
 
     &:active {
-        background-color: #778DA3;
-        color: #ffffff;
+        background-color: ${props => props.pressed ? '#778DA3' : '#ffffff'};
+        color: ${props => props.pressed ? '#ffffff' : '#778DA3'};
     }
 `;
 
-const Button = ({text, onPress}) => {
+const Button = ({ text, onPress, pressed }) => {
     return (
-        <StyledButton onClick={onPress}>
+        <StyledButton pressed={pressed} onClick={onPress}>
             {text}
         </StyledButton>
     );

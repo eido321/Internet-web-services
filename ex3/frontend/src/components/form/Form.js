@@ -96,6 +96,7 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
         id: '',
         json: ''
     });
+    const [errorMessages, setErrorMessages] = useState([]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -106,10 +107,7 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
     };
 
     const handleSubmit = async (e) => {
-        setFormData({
-            id: '',
-            json: ''
-        });
+
         if (e) {
             e.preventDefault();
         }
@@ -117,6 +115,7 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
             if (type === 'getVisible') {
                 const result = await axios.get(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
                 setData(result.data);
+                setErrorMessages([]);
             } else if (type === 'createVisible') {
                 const formDataObject = JSON.parse(formData.json); // Parse JSON string into object
                 const result = await axios.post('https://internet-web-services.onrender.com/api/familyReunificationForm', formDataObject, {
@@ -125,6 +124,8 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
                     }
                 });
                 setData(result.data);
+                setErrorMessages([]);
+
             } else if (type === 'updateVisible') {
                 const formDataObject = JSON.parse(formData.json); // Parse JSON string into object
                 const result = await axios.put(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`, formDataObject, {
@@ -133,17 +134,27 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
                     }
                 });
                 setData(result.data);
+                setErrorMessages([]);
+
             } else if (type === 'deleteVisible') {
                 const result = await axios.delete(`https://internet-web-services.onrender.com/api/familyReunificationForm/${formData.id}`);
                 setData(result.data);
+                setErrorMessages([]);
+
             } else if (type === 'getAllVisible') {
                 const result = await axios.get(`https://internet-web-services.onrender.com/api/familyReunificationForm`);
-                console.log('here');
                 setData(result.data);
+                setErrorMessages([]);
+
             }
         } catch (error) {
             console.error('Error submitting form:', error.response ? error.response.data : error.message);
+            setErrorMessages([error.response ? error.response.data : error.message]);
         }
+        setFormData({
+            id: '',
+            json: ''
+        });
     };
 
     useEffect(() => {
@@ -170,6 +181,14 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
                             <TextArea id='json' name='json' rows='10' cols='50' value={formData.json} onChange={handleChange}></TextArea>
                         </InputContainer>
                     )}
+                    {errorMessages.length > 0 && (
+                        <InputContainer>
+                            {errorMessages.map((error, index) => (
+                                <p key={index}>{error.message}</p>
+                            ))}
+                        </InputContainer>
+                    )}
+
                     <ButtonContainer>
                         <Button onClick={handleSubmit}>Submit</Button>
                     </ButtonContainer>

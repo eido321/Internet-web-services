@@ -20,7 +20,6 @@ const DetailsTitle = styled.h1`
 `;
 
 const SuccessMsg = ({data,text}) => {
-    console.log('data: ' ,data);
     return (
         <DetailsDiv>
             {data && (<DetailsTitle>{text}</DetailsTitle>)}

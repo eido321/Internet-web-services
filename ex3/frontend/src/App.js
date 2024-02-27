@@ -10,6 +10,8 @@ function App() {
   const [createVisible, setCreateVisible] = useState(false);
   const [updateVisible, setUpdateVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const [data, setData] = useState(null);
   
@@ -23,6 +25,8 @@ function App() {
         setUpdateVisible={setUpdateVisible}
         setDeleteVisible={setDeleteVisible}
         setData={setData}
+        setShowLoading={setShowLoading}
+        setShowError={setShowError}
       />
       <ScrollView 
         getAllVisible={getAllVisible}
@@ -32,6 +36,10 @@ function App() {
         deleteVisible={deleteVisible}
         data={data}
         setData={setData}
+        showLoading={showLoading}
+        setShowLoading={setShowLoading}
+        showError={showError}
+        setShowError={setShowError}
       />
     </div>
   );

@@ -91,7 +91,7 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const Form = ({ idInput, jsonInput, setData, type }) => {
+const Form = ({ idInput, jsonInput, data, setData, type, setShowLoading, showError, setShowError }) => {
     const [formData, setFormData] = useState({
         id: '',
         json: ''
@@ -107,7 +107,7 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
     };
 
     const handleSubmit = async (e) => {
-
+        setShowLoading(true);
         if (e) {
             e.preventDefault();
         }
@@ -148,8 +148,10 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
 
             }
         } catch (error) {
-            console.error('Error submitting form:', error.response ? error.response.data : error.message);
+            setShowLoading(false);
+            setShowError(true);
             setErrorMessages([error.response ? error.response.data : error.message]);
+            console.error('Error submitting form:', error.response ? error.response.data : error.message);
         }
         setFormData({
             id: '',
@@ -159,6 +161,7 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
 
     useEffect(() => {
         if (type === 'getAllVisible') {
+            setShowLoading(true);
             handleSubmit(); // Call handleSubmit only when type is 'getAllVisible'
         }
     }, [type]);
@@ -175,13 +178,13 @@ const Form = ({ idInput, jsonInput, setData, type }) => {
                             <Input type='text' id='id' name='id' value={formData.id} onChange={handleChange} />
                         </InputContainer>
                     )}
-                    {jsonInput && (
+                    {jsonInput && ( 
                         <InputContainer>
                             <InputLabel htmlFor='json'>Enter JSON text:</InputLabel>
                             <TextArea id='json' name='json' rows='10' cols='50' value={formData.json} onChange={handleChange}></TextArea>
                         </InputContainer>
                     )}
-                    {errorMessages.length > 0 && (
+                    {errorMessages.length > 0 && showError && (
                         <InputContainer>
                             {errorMessages.map((error, index) => (
                                 <p key={index}>{error.message}</p>

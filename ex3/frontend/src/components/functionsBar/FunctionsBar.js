@@ -14,11 +14,12 @@ const NavContainer = styled.div`
     align-items: center;
 `;
 
-const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUpdateVisible, setDeleteVisible, setData }) => {
+const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUpdateVisible, setDeleteVisible, setData, setShowLoading, setShowError }) => {
     const [pressedButton, setPressedButton] = useState('Get All Family Reunification Forms');
 
     const handleButtonPress = (buttonName) => {
         setPressedButton(buttonName);
+        setShowLoading(false);
         switch (buttonName) {
             case 'Get All Family Reunification Forms':
                 setGetAllVisible(true);
@@ -27,6 +28,7 @@ const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUp
                 setUpdateVisible(false);
                 setDeleteVisible(false);
                 setData(null);
+                setShowError(false);
                 break;
             case 'Get a Family Reunification Form':
                 setGetAllVisible(false);
@@ -35,6 +37,7 @@ const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUp
                 setUpdateVisible(false);
                 setDeleteVisible(false);
                 setData(null);
+                setShowError(false);
                 break;
             case 'Create a Family Reunification Form':
                 setGetAllVisible(false);
@@ -43,6 +46,7 @@ const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUp
                 setUpdateVisible(false);
                 setDeleteVisible(false);
                 setData(null);
+                setShowError(false);
                 break;
             case 'Update a Family Reunification Form':
                 setGetAllVisible(false);
@@ -51,6 +55,7 @@ const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUp
                 setUpdateVisible(true);
                 setDeleteVisible(false);
                 setData(null);
+                setShowError(false);
                 break;
             case 'Delete a Family Reunification Form':
                 setGetAllVisible(false);
@@ -59,6 +64,7 @@ const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUp
                 setUpdateVisible(false);
                 setDeleteVisible(true);
                 setData(null);
+                setShowError(false);
                 break;
             default:
                 break;

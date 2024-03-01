@@ -1,19 +1,7 @@
-
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Button from '../button/Button';
-
-const NavContainer = styled.div`
-    background-color: #ffffff;
-    border-bottom: 2px solid #778DA3;
-    margin: 0;
-    padding: 10px 2% 10px 2%;
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-`;
-
+import { NavContainer } from './functionsBar.style';
+// eslint-disable-next-line react/prop-types
 const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUpdateVisible, setDeleteVisible, setData, setShowLoading, setShowError }) => {
     const [pressedButton, setPressedButton] = useState('Get All Family Reunification Forms');
 
@@ -21,53 +9,53 @@ const FunctionsBar = ({ setGetAllVisible, setGetVisible, setCreateVisible, setUp
         setPressedButton(buttonName);
         setShowLoading(false);
         switch (buttonName) {
-            case 'Get All Family Reunification Forms':
-                setGetAllVisible(true);
-                setGetVisible(false);
-                setCreateVisible(false);
-                setUpdateVisible(false);
-                setDeleteVisible(false);
-                setData(null);
-                setShowError(false);
-                break;
-            case 'Get a Family Reunification Form':
-                setGetAllVisible(false);
-                setGetVisible(true);
-                setCreateVisible(false);
-                setUpdateVisible(false);
-                setDeleteVisible(false);
-                setData(null);
-                setShowError(false);
-                break;
-            case 'Create a Family Reunification Form':
-                setGetAllVisible(false);
-                setGetVisible(false);
-                setCreateVisible(true);
-                setUpdateVisible(false);
-                setDeleteVisible(false);
-                setData(null);
-                setShowError(false);
-                break;
-            case 'Update a Family Reunification Form':
-                setGetAllVisible(false);
-                setGetVisible(false);
-                setCreateVisible(false);
-                setUpdateVisible(true);
-                setDeleteVisible(false);
-                setData(null);
-                setShowError(false);
-                break;
-            case 'Delete a Family Reunification Form':
-                setGetAllVisible(false);
-                setGetVisible(false);
-                setCreateVisible(false);
-                setUpdateVisible(false);
-                setDeleteVisible(true);
-                setData(null);
-                setShowError(false);
-                break;
-            default:
-                break;
+        case 'Get All Family Reunification Forms':
+            setGetAllVisible(true);
+            setGetVisible(false);
+            setCreateVisible(false);
+            setUpdateVisible(false);
+            setDeleteVisible(false);
+            setData(null);
+            setShowError(false);
+            break;
+        case 'Get a Family Reunification Form':
+            setGetAllVisible(false);
+            setGetVisible(true);
+            setCreateVisible(false);
+            setUpdateVisible(false);
+            setDeleteVisible(false);
+            setData(null);
+            setShowError(false);
+            break;
+        case 'Create a Family Reunification Form':
+            setGetAllVisible(false);
+            setGetVisible(false);
+            setCreateVisible(true);
+            setUpdateVisible(false);
+            setDeleteVisible(false);
+            setData(null);
+            setShowError(false);
+            break;
+        case 'Update a Family Reunification Form':
+            setGetAllVisible(false);
+            setGetVisible(false);
+            setCreateVisible(false);
+            setUpdateVisible(true);
+            setDeleteVisible(false);
+            setData(null);
+            setShowError(false);
+            break;
+        case 'Delete a Family Reunification Form':
+            setGetAllVisible(false);
+            setGetVisible(false);
+            setCreateVisible(false);
+            setUpdateVisible(false);
+            setDeleteVisible(true);
+            setData(null);
+            setShowError(false);
+            break;
+        default:
+            break;
         }
     };
 

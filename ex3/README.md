@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Family Reunification Form 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains files for a simple Family Reunification Form and a frontend application built with React. The Application is designed to handle CRUD operations (Create, Read, Update, Delete) for family reunification forms.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+### Backend (Express Server)
 
-### `npm start`
+The backend serves as the server responsible for handling family reunification form operations.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Express Server**: The main server file (`app.js`) sets up the Express server, middleware, and routes for handling requests.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **MongoDB Integration**: MongoDB is utilized as the data storage mechanism, with Mongoose for interacting with the database.
 
-### `npm test`
+- **RESTful API Endpoints**: The API exposes endpoints for CRUD operations on family reunification forms, following RESTful principles.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Frontend (React Application)
 
-### `npm run build`
+The frontend is built with React to provide an interactive user interface for interacting with the Family Reunification Form.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React Components**: The frontend consists of React components for different sections of the application, providing modularity and reusability.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Fetch Integration**: React components make fetch calls to the backend server using libraries like Axios or Fetch for data retrieval and manipulation.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **State Management**: React state (useState hook) is used to manage the state of the application, including form data, error messages, and UI states.
 
-### `npm run eject`
+- **Routing**: React Router is implemented for client-side routing, enabling navigation between different sections of the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **app.js**: Entry point for the Express server.
+- **routes/**: Contains route handlers for endpoints.
+- **controllers/**: Contains controller functions for handling HTTP requests.
+- **models/**: Contains Mongoose models for data schema definition.
+- **middlewares/**: Custom middleware functions for error handling, etc.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
 
-## Learn More
+  - **src/**: Contains the source code for the React frontend.
+  - **components/**: React components for different sections of the application.
+  - **App.js**: Main component orchestrating the application layout and routing.
+  - **index.js**: Entry point for the React application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Web
 
-### Code Splitting
+1. **Site Link**: `https://family-reunification-form.netlify.app/`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Manualy
 
-### Analyzing the Bundle Size
+1. **Install Dependencies**: 
+    - For the backend: `cd backend && npm install`
+    - For the frontend: `cd frontend && npm install`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Run the Development Servers**:
+    - For the backend: `cd backend && node app.js`
+    - For the frontend: `cd frontend && npm start`
 
-### Making a Progressive Web App
+3. **Access the Application**:
+    - Frontend: Open your browser and navigate to `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Backend: Test endpoints and controller functions using testing libraries using jest: `npx jest`.
 
-### Deployment
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Frontend: Build the React app for production using `npm run build` and deploy to a hosting service.
+- Backend: Deploy the Express server to a suitable hosting environment, ensuring MongoDB is properly configured.
 
-### `npm run build` fails to minify
+## Postman Collection
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Access the endpoints using Postman or a similar tool:
+
+[Family Reunification Form Postman Collection](https://documenter.getpostman.com/view/31980925/2s9YymGjZt)
